@@ -213,7 +213,6 @@ void receive_data_from_uart_dma(char *rx_buff, uint16_t rx_buff_len,
 
 	uint16_t rx_half_len = rx_buff_len / 2;
 	index_byte = 0;
-	memset(final_buff, '\0', final_buff_len);
 
 	HAL_UART_Receive_DMA(&huart1, (uint8_t*) rx_buff, rx_buff_len);
 
@@ -232,11 +231,6 @@ void receive_data_from_uart_dma(char *rx_buff, uint16_t rx_buff_len,
 		memset(rx_buff + rx_half_len, '\0', rx_half_len);
 		index_byte += rx_half_len;
 	}
-
-//	if (index_byte == final_buff_len) {
-//		index_byte = 0;
-//		memset(final_buff, '\0', final_buff_len);
-//	}
 
 }
 
